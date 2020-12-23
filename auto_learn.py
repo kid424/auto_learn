@@ -18,6 +18,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import NoSuchElementException
 
 import config
 
@@ -105,6 +106,8 @@ class AutoLearn:
                 self.browser.refresh()
                 time.sleep(3)
 	        flag += 1
+        except NoSuchElementException as nsee:
+            print '已经学完所有选择课程'
         except Exception as e:
             print '学习过程中出现异常: ', e
 	finally:
